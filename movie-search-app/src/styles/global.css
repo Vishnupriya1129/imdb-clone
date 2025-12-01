@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f9fafb;
+  color: #111827;
+}
+
+.app {
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.results {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.movie-item {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.movie-item:hover {
+  transform: scale(1.03);
+}
+
+.poster {
+  width: 100%;
+  display: block;
+}
+
+.info {
+  padding: 10px;
+}
+
+.title {
+  font-weight: bold;
+  display: block;
+}
+
+.year {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
