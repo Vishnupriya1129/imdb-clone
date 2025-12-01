@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 
-const STORAGE_KEY = 'todo_app_tasks_v1';
+const STORAGE_KEY = 'persistent_todo_app_tasks_v1';
 
 export default function App() {
   const [tasks, setTasks] = useState(() => {
@@ -13,7 +13,6 @@ export default function App() {
       return [];
     }
   });
-
   const [filter, setFilter] = useState('all'); // all | pending | completed
 
   useEffect(() => {
@@ -66,9 +65,21 @@ export default function App() {
 
         <div className="filter-bar">
           <div className="filters">
-            <button className={filter === 'all' ? 'active' : ''} onClick={() => setFilter('all')}>All</button>
-            <button className={filter === 'pending' ? 'active' : ''} onClick={() => setFilter('pending')}>Pending</button>
-            <button className={filter === 'completed' ? 'active' : ''} onClick={() => setFilter('completed')}>Completed</button>
+            <button className={filter === 'all' ? 'active' : ''} onClick={() => setFilter('all')}>
+              All
+            </button>
+            <button
+              className={filter === 'pending' ? 'active' : ''}
+              onClick={() => setFilter('pending')}
+            >
+              Pending
+            </button>
+            <button
+              className={filter === 'completed' ? 'active' : ''}
+              onClick={() => setFilter('completed')}
+            >
+              Completed
+            </button>
           </div>
           <div className="actions">
             <button onClick={clearCompleted}>Clear completed</button>
@@ -79,8 +90,12 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <span><strong>{tasks.length}</strong> total</span>
-        <span><strong>{tasks.filter((t) => t.completed).length}</strong> completed</span>
+        <span>
+          <strong>{tasks.length}</strong> total
+        </span>
+        <span>
+          <strong>{tasks.filter((t) => t.completed).length}</strong> completed
+        </span>
       </footer>
     </div>
   );

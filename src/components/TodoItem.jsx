@@ -18,7 +18,9 @@ export default function TodoItem({ task, onToggle, onDelete }) {
         <div className="meta">{new Date(task.createdAt).toLocaleString()}</div>
       </div>
 
-      <button className="delete" onClick={() => onDelete(task.id)} aria-label="Delete task">✕</button>
+      <button className="delete" onClick={() => onDelete(task.id)} aria-label="Delete task">
+        ✕
+      </button>
     </div>
   );
 }
