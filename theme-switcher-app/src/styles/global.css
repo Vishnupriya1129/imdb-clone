@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body[data-theme='light'] {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+body[data-theme='dark'] {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+.app {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.toggle-btn {
+  margin-top: 20px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #2563eb;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background: #1e40af;
+}
