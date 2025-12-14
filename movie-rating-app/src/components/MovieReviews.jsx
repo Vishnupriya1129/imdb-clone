@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ReviewForm from "./ReviewForm";
+import "./MovieReviews.css";
 
 const MovieReviews = ({ movieId, user, reviews = [], onAddReview }) => {
   const avg =
@@ -14,7 +16,7 @@ const MovieReviews = ({ movieId, user, reviews = [], onAddReview }) => {
       <h4>User Reviews</h4>
 
       {avg && (
-        <p className="movie-reviewsavg">
+        <p className="movie-reviews-avg">
           Average user rating: <strong>{avg}/10</strong> ({reviews.length}{" "}
           vote{reviews.length > 1 ? "s" : ""})
         </p>
@@ -22,24 +24,29 @@ const MovieReviews = ({ movieId, user, reviews = [], onAddReview }) => {
 
       <ReviewForm movieId={movieId} user={user} onAddReview={onAddReview} />
 
-      <ul className="movie-reviewslist">
+      <ul className="movie-reviews-list">
         {reviews.map((r, idx) => (
-          <li key={idx} className="movie-reviewsitem">
-            <div className="movie-reviewsmeta">
-              <span className="movie-reviewsusername">{r.username}</span>
-              <span className="movie-reviewsrating">{r.rating}/10</span>
-              <span className="movie-reviewstime">
+          <li key={idx} className="movie-reviews-item">
+            <div className="movie-reviews-meta">
+              <span className="movie-reviews-username">{r.username}</span>
+              <span className="movie-reviews-rating">{r.rating}/10</span>
+              <span className="movie-reviews-time">
                 {new Date(r.createdAt).toLocaleString()}
               </span>
             </div>
-            {r.comment && (
-              <p className="movie-reviewscomment">{r.comment}</p>
-            )}
+            {r.comment && <p className="movie-reviews-comment">{r.comment}</p>}
           </li>
         ))}
       </ul>
     </div>
   );
+};
+
+MovieReviews.propTypes = {
+  movieId: PropTypes.string.isRequired,
+  user: PropTypes.object,
+  reviews: PropTypes.array,
+  onAddReview: PropTypes.func.isRequired,
 };
 
 export default MovieReviews;

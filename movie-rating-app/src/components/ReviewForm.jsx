@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
+import "./ReviewForm.css";
 
 const ReviewForm = ({ movieId, user, onAddReview }) => {
   const [rating, setRating] = useState(10);
@@ -55,6 +57,12 @@ const ReviewForm = ({ movieId, user, onAddReview }) => {
       <button type="submit">Submit review</button>
     </form>
   );
+};
+
+ReviewForm.propTypes = {
+  movieId: PropTypes.string.isRequired,
+  user: PropTypes.object,
+  onAddReview: PropTypes.func.isRequired,
 };
 
 export default ReviewForm;

@@ -1,5 +1,5 @@
 // src/services/api.js
-const OMDB_API_KEY = "7df63cea"; // replace with your own key if needed
+const OMDB_API_KEY = import.meta.env.VITE_OMDB_API_KEY; // use .env for security
 
 export const fetchMoviesByTitle = async (title) => {
   const res = await fetch(

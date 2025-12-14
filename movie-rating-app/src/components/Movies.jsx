@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { fetchMoviesByTitle } from "../services/api";
+import { fetchMoviesByTitle } from "../services/api.js";
 import MovieCard from "./MovieCard";
 import "./Movies.css";
 
@@ -47,8 +47,8 @@ const Movies = () => {
           <MovieCard
             key={movie.imdbID}
             movie={movie}
-            user={{ username: "Guest" }} // placeholder user
-            reviews={[]} // start empty
+            user={{ username: "Guest" }}
+            reviews={[]}
             onAddReview={(id, review) =>
               console.log("Review added for", id, review)
             }

@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import MovieReviews from "./MovieReviews";
+import "./MovieCard.css";
 
 const MovieCard = ({ movie, user, reviews, onAddReview }) => {
   const posterUrl =
@@ -18,7 +20,7 @@ const MovieCard = ({ movie, user, reviews, onAddReview }) => {
       />
       <div className="movie-info">
         <h3>{movie.Title}</h3>
-        <p className="rating">Year: {movie.Year}</p>
+        <p className="movie-rating">Year: {movie.Year}</p>
       </div>
 
       <MovieReviews
@@ -29,6 +31,13 @@ const MovieCard = ({ movie, user, reviews, onAddReview }) => {
       />
     </div>
   );
+};
+
+MovieCard.propTypes = {
+  movie: PropTypes.object.isRequired,
+  user: PropTypes.object,
+  reviews: PropTypes.array,
+  onAddReview: PropTypes.func.isRequired,
 };
 
 export default MovieCard;
