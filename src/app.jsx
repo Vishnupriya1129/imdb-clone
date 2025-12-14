@@ -1,102 +1,35 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import TodoInput from './components/TodoInput';
-import TodoList from './components/TodoList';
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
-const STORAGE_KEY = 'persistent_todo_app_tasks_v1';
-
-export default function App() {
-  const [tasks, setTasks] = useState(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch {
-      return [];
-    }
-  });
-  const [filter, setFilter] = useState('all'); // all | pending | completed
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-    } catch (e) {
-      console.error('Failed to save tasks', e);
-    }
-  }, [tasks]);
-
-  const addTask = (text) => {
-    const trimmed = text?.trim();
-    if (!trimmed) return;
-    const newTask = {
-      id: crypto?.randomUUID?.() ?? Date.now().toString(),
-      text: trimmed,
-      completed: false,
-      createdAt: Date.now()
-    };
-    setTasks((prev) => [newTask, ...prev]);
-  };
-
-  const toggleTask = (id) => {
-    setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)));
-  };
-
-  const deleteTask = (id) => {
-    setTasks((prev) => prev.filter((t) => t.id !== id));
-  };
-
-  const clearCompleted = () => {
-    setTasks((prev) => prev.filter((t) => !t.completed));
-  };
-
-  const filtered = useMemo(() => {
-    return tasks.filter((t) =>
-      filter === 'all' ? true : filter === 'completed' ? t.completed : !t.completed
-    );
-  }, [tasks, filter]);
+function App() {
+  const [count, setCount] = useState(0)
 
   return (
-    <div className="app">
-      <header className="header">
-        <h1>To‑Do</h1>
-        <p className="subtitle">Persistent tasks saved in localStorage</p>
-      </header>
-
-      <main className="container">
-        <TodoInput onAdd={addTask} />
-
-        <div className="filter-bar">
-          <div className="filters">
-            <button className={filter === 'all' ? 'active' : ''} onClick={() => setFilter('all')}>
-              All
-            </button>
-            <button
-              className={filter === 'pending' ? 'active' : ''}
-              onClick={() => setFilter('pending')}
-            >
-              Pending
-            </button>
-            <button
-              className={filter === 'completed' ? 'active' : ''}
-              onClick={() => setFilter('completed')}
-            >
-              Completed
-            </button>
-          </div>
-          <div className="actions">
-            <button onClick={clearCompleted}>Clear completed</button>
-          </div>
-        </div>
-
-        <TodoList tasks={filtered} onToggle={toggleTask} onDelete={deleteTask} />
-      </main>
-
-      <footer className="footer">
-        <span>
-          <strong>{tasks.length}</strong> total
-        </span>
-        <span>
-          <strong>{tasks.filter((t) => t.completed).length}</strong> completed
-        </span>
-      </footer>
-    </div>
-  );
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
+
+export default App

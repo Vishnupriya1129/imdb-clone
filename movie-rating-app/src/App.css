@@ -1,0 +1,150 @@
+.movies-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.2rem;
+}
+
+.movie-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+
+.movie-info {
+  padding: 1.2rem 1.4rem;
+}
+
+.movie-info h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.3rem;
+}
+
+.rating {
+  margin: 0.2rem 0 0.7rem;
+  font-weight: 600;
+  color: #f39c12;
+}
+
+/* Reviews */
+
+.movie-reviews {
+  padding: 1rem 1.4rem 1.2rem;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+  background: #fafafa;
+}
+
+.movie-reviews h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.movie-reviews__avg {
+  margin: 0 0 0.75rem;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.review-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.review-form input,
+.review-form textarea {
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font: inherit;
+}
+
+.review-form button {
+  align-self: flex-start;
+  padding: 0.4rem 0.9rem;
+  background: #2c3e50;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.review-form button:hover {
+  background: #1b2836;
+}
+
+.movie-reviews__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.movie-reviews__item {
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1px solid #eee;
+}
+
+.movie-reviews__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.movie-reviews__username {
+  font-weight: 600;
+}
+
+.movie-reviews__rating {
+  color: #f39c12;
+}
+
+.movie-reviews__comment {
+  margin-top: 0.3rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .movies-container {
+    padding: 1rem;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
